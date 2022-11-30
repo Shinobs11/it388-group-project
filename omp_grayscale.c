@@ -69,8 +69,7 @@ int main(int argc, char *argv[]) {
     double elapsed = finish - start;
     printf("Compression Time: %f seconds\n", elapsed);
     
-    
-    stbi_write_jpg(compressedFileName, comp_width, comp_height, channels, comp_img, 100);
+    // stbi_write_jpg(compressedFileName, comp_width, comp_height, channels, comp_img, 100);
     printf("Image compression complete\n\n");
 
     //GRAY SCALE
@@ -91,15 +90,15 @@ int main(int argc, char *argv[]) {
     }
 
 
+    //2nd Grayscale parallel approach
 
-
-    #pragma omp parallel 
-    for(int i=0; i<comp_height; i++){
-        #pragma omp for nowait
-        for(int j=0; j<comp_width; j++){
-            pg[i*comp_width + j] = (uint8_t)((cpg[channels*(i*comp_width + j)] + cpg[channels*(i*comp_width + j) + 1] + cpg[channels*(i*comp_width + j) + 2])/3.0);
-        }
-    }
+    // #pragma omp parallel 
+    // for(int i=0; i<comp_height; i++){
+    //     #pragma omp for nowait
+    //     for(int j=0; j<comp_width; j++){
+    //         pg[i*comp_width + j] = (uint8_t)((cpg[channels*(i*comp_width + j)] + cpg[channels*(i*comp_width + j) + 1] + cpg[channels*(i*comp_width + j) + 2])/3.0);
+    //     }
+    // }
 
     finish = omp_get_wtime();
     elapsed = finish - start;
@@ -107,6 +106,7 @@ int main(int argc, char *argv[]) {
 
 
     stbi_write_jpg(greyscaleFileName, comp_width, comp_height, gray_channels, gray_img, 100); //1-100 image quality
+    stbi_write_jpg(compressedFileName, comp_width, comp_height, channels, comp_img, 100);
     printf("Image grayscale complete\n");
     
     /* cleaning up memory*/

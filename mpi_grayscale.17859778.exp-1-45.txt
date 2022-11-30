@@ -1,0 +1,40 @@
+
+
+Loaded image with a width of 30000px, a height of 22943px and 3 channels
+Number procs: 1
+Filename: bigImage.jpg
+Pre-compression size: 198621373 B
+Post-compression size: 106225389 B
+Time: 2.337699
+
+
+Loaded image with a width of 30000px, a height of 22943px and 3 channels
+Number procs: 2
+Filename: bigImage.jpg
+Pre-compression size: 198621373 B
+Post-compression size: 106225432 B
+Time: 1.277187
+
+
+Loaded image with a width of 30000px, a height of 22943px and 3 channels
+Number procs: 5
+Filename: bigImage.jpg
+Pre-compression size: 198621373 B
+Post-compression size: 131951640 B
+Time: 0.545823
+
+
+Loaded image with a width of 30000px, a height of 22943px and 3 channels
+Number procs: 10
+Filename: bigImage.jpg
+Pre-compression size: 198621373 B
+Post-compression size: 131951640 B
+Time: 0.283988
+
+
+Loaded image with a width of 30000px, a height of 22943px and 3 channels
+Number procs: 100
+Filename: bigImage.jpg
+Pre-compression size: 198621373 B
+Post-compression size: 106225424 B
+Time: 0.192942
