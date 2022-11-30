@@ -80,7 +80,7 @@ int main(int argc, char *argv[]) {
     
 
     
-
+    double start2 = omp_get_wtime();
     #pragma omp parallel for
     for(int i=0; i<comp_height; i++){
         for(int j=0; j<comp_width; j++){
@@ -88,7 +88,8 @@ int main(int argc, char *argv[]) {
 
         }
     }
-
+    elapsed = omp_get_wtime()-start2;
+    printf("Grayscale time:%f\n", elapsed);
 
     //2nd Grayscale parallel approach
 
@@ -99,7 +100,7 @@ int main(int argc, char *argv[]) {
     //         pg[i*comp_width + j] = (uint8_t)((cpg[channels*(i*comp_width + j)] + cpg[channels*(i*comp_width + j) + 1] + cpg[channels*(i*comp_width + j) + 2])/3.0);
     //     }
     // }
-
+    
     finish = omp_get_wtime();
     elapsed = finish - start;
     printf("Threads: %d  Total Time: %f seconds\n", nThreads, elapsed);
