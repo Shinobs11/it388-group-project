@@ -1,0 +1,45 @@
+
+
+Loaded image with a width of 4037px, a height of 6056px and 3 channels
+Number threads: 1
+Compression Time: 0.028575 seconds
+Image compression complete
+
+Threads: 1  Total Time: 0.038412 seconds
+Image grayscale complete
+
+
+Loaded image with a width of 4037px, a height of 6056px and 3 channels
+Number threads: 2
+Compression Time: 0.014607 seconds
+Image compression complete
+
+Threads: 2  Total Time: 0.019711 seconds
+Image grayscale complete
+
+
+Loaded image with a width of 4037px, a height of 6056px and 3 channels
+Number threads: 5
+Compression Time: 0.006611 seconds
+Image compression complete
+
+Threads: 5  Total Time: 0.008808 seconds
+Image grayscale complete
+
+
+Loaded image with a width of 4037px, a height of 6056px and 3 channels
+Number threads: 10
+Compression Time: 0.005001 seconds
+Image compression complete
+
+Threads: 10  Total Time: 0.006544 seconds
+Image grayscale complete
+
+
+Loaded image with a width of 4037px, a height of 6056px and 3 channels
+Number threads: 100
+Compression Time: 0.009057 seconds
+Image compression complete
+
+Threads: 100  Total Time: 0.010265 seconds
+Image grayscale complete
