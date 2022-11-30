@@ -241,14 +241,18 @@ int main(int argc, char *argv[])
       }
     }
   }
-  
+  MPI_Barrier(comm);
+  elapsed = MPI_Wtime() - start;
+  printf("Grayscale Time: %f\n", elapsed);
 
 
   hmod = cImgHeight % nproc;
   hdiv = cImgHeight / nproc;
   work_height_start /= 2;
   work_height_end /= 2;
-
+  
+  MPI_Barrier(comm);
+  double start2 = MPI_Wtime();
   for (int i = work_height_start; i < work_height_end; i++)
   {
     for (int j = 0; j < cImgWidth; j++)
@@ -261,12 +265,12 @@ int main(int argc, char *argv[])
       gImg[i * cImgWidth + j] = sum / channels;
     }
   }
+    
   MPI_Barrier(comm);
-  elapsed = MPI_Wtime() - start;
+  double grayScaleElapsed = Wtime() - start2;
+  elapsed = Wtime() - start;
+  printf("Grayscale time: %f\n", grayScaleElapsed);
   
-
-
-
 
   // write resulting images
   if (rank == 0)
