@@ -2,39 +2,49 @@
 
 Loaded image with a width of 4037px, a height of 6056px and 3 channels
 Number procs: 1
+Compression Time: 0.052619
+Grayscale time: 0.032489
 Filename: cat.jpg
 Pre-compression size: 2032426 B
 Post-compression size: 1936255 B
-Time: 0.086917
+Time: 0.085109
 
 
 Loaded image with a width of 4037px, a height of 6056px and 3 channels
 Number procs: 2
+Compression Time: 0.031964
+Grayscale time: 0.017749
 Filename: cat.jpg
 Pre-compression size: 2032426 B
-Post-compression size: 1936313 B
-Time: 0.048025
+Post-compression size: 1936308 B
+Time: 0.049721
 
 
 Loaded image with a width of 4037px, a height of 6056px and 3 channels
 Number procs: 5
+Compression Time: 0.013884
+Grayscale time: 0.007334
 Filename: cat.jpg
 Pre-compression size: 2032426 B
 Post-compression size: 1936281 B
-Time: 0.021361
+Time: 0.021221
 
 
 Loaded image with a width of 4037px, a height of 6056px and 3 channels
 Number procs: 10
+Compression Time: 0.007770
+Grayscale time: 0.003710
 Filename: cat.jpg
 Pre-compression size: 2032426 B
-Post-compression size: 1936303 B
-Time: 0.010929
+Post-compression size: 1936312 B
+Time: 0.011484
 
 
 Loaded image with a width of 4037px, a height of 6056px and 3 channels
-Number procs: 100
+Number procs: 20
+Compression Time: 0.006043
+Grayscale time: 0.002039
 Filename: cat.jpg
 Pre-compression size: 2032426 B
-Post-compression size: 1936291 B
-Time: 0.007392
+Post-compression size: 1936290 B
+Time: 0.008088

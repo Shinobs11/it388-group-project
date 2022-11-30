@@ -242,8 +242,8 @@ int main(int argc, char *argv[])
     }
   }
   MPI_Barrier(comm);
-  elapsed = MPI_Wtime() - start;
-  printf("Grayscale Time: %f\n", elapsed);
+  double compElapsed = MPI_Wtime() - start;
+  
 
 
   hmod = cImgHeight % nproc;
@@ -267,16 +267,17 @@ int main(int argc, char *argv[])
   }
     
   MPI_Barrier(comm);
-  double grayScaleElapsed = Wtime() - start2;
-  elapsed = Wtime() - start;
-  printf("Grayscale time: %f\n", grayScaleElapsed);
+  double grayScaleElapsed = MPI_Wtime() - start2;
+  elapsed = MPI_Wtime() - start;
   
 
   // write resulting images
   if (rank == 0)
   {
 
-    
+    printf("Compression Time: %f\n", compElapsed);
+    printf("Grayscale time: %f\n", grayScaleElapsed);
+
    
     if (ftype == PNG)
     {

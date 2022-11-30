@@ -2,44 +2,49 @@
 
 Loaded image with a width of 30000px, a height of 22943px and 3 channels
 Number threads: 1
-Compression Time: 0.776029 seconds
+Compression Time: 0.773002 seconds
 Image compression complete
 
-Threads: 1  Total Time: 1.043683 seconds
+Grayscale time:0.267330
+Threads: 1  Total Time: 1.040370 seconds
 Image grayscale complete
 
 
 Loaded image with a width of 30000px, a height of 22943px and 3 channels
 Number threads: 2
-Compression Time: 0.389755 seconds
+Compression Time: 0.388949 seconds
 Image compression complete
 
-Threads: 2  Total Time: 0.524617 seconds
+Grayscale time:0.134904
+Threads: 2  Total Time: 0.523895 seconds
 Image grayscale complete
 
 
 Loaded image with a width of 30000px, a height of 22943px and 3 channels
 Number threads: 5
-Compression Time: 0.158098 seconds
+Compression Time: 0.158270 seconds
 Image compression complete
 
-Threads: 5  Total Time: 0.212296 seconds
+Grayscale time:0.054152
+Threads: 5  Total Time: 0.212464 seconds
 Image grayscale complete
 
 
 Loaded image with a width of 30000px, a height of 22943px and 3 channels
 Number threads: 10
-Compression Time: 0.095647 seconds
+Compression Time: 0.094608 seconds
 Image compression complete
 
-Threads: 10  Total Time: 0.124935 seconds
+Grayscale time:0.028989
+Threads: 10  Total Time: 0.123640 seconds
 Image grayscale complete
 
 
 Loaded image with a width of 30000px, a height of 22943px and 3 channels
-Number threads: 100
-Compression Time: 0.089546 seconds
+Number threads: 20
+Compression Time: 0.108899 seconds
 Image compression complete
 
-Threads: 100  Total Time: 0.110252 seconds
+Grayscale time:0.025519
+Threads: 20  Total Time: 0.134459 seconds
 Image grayscale complete
