@@ -212,6 +212,10 @@ int main(int argc, char *argv[])
   //   }
   // }
 
+
+  /*
+  IMAGE COMPRESSION
+  */
   if(channels == 3){
     for (int i = work_height_start/2; i < work_height_end/2; i++)
     { // height where work is being done at in incremenets of comp_value
@@ -246,6 +250,9 @@ int main(int argc, char *argv[])
   
 
 
+  /*
+  GRAYSCALE
+  */
   hmod = cImgHeight % nproc;
   hdiv = cImgHeight / nproc;
   work_height_start /= 2;
@@ -297,6 +304,8 @@ int main(int argc, char *argv[])
     stat(grayscaleFileName, &postCompSb);
     printf("Filename: %s\nPre-compression size: %ld B\nPost-compression size: %ld B\nTime: %f\n",originalFileName, preCompSb.st_size, postCompSb.st_size, elapsed);
   }
+
+  //Free memory
   MPI_Win_free(&imgWindow);
   MPI_Win_free(&cImgWindow);
   MPI_Win_free(&gImgWindow);

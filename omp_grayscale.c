@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
 
 
     int width, height, channels;
-    unsigned char *img = stbi_load(originalFileName, &width, &height, &channels, 0);
+    unsigned char *img = stbi_load(originalFileName, &width, &height, &channels, 0); //Loading image
     // stbi_write_jpg("test.png", width, height, channels, img, 100);
 
     if(img == NULL) {
@@ -41,12 +41,16 @@ int main(int argc, char *argv[]) {
     
     printf("\n\nLoaded image with a width of %dpx, a height of %dpx and %d channels\n", width, height, channels);
     printf("Number threads: %d\n", nThreads);
-    //IMAGE COMPRESSION
+    
+    /*
+    IMAGE COMPRESSION
+    */
     size_t img_size = width * height * channels;
-    int comp_width = width/2, comp_height = height/2;
+    int comp_width = width/2, comp_height = height/2;  //Block compression shrinks size by factor of 2
     size_t comp_img_size = comp_width * comp_height * channels;
     unsigned char *comp_img = malloc(comp_img_size);
    
+    //Input and output image pointers
     unsigned char *cpg=comp_img;
     unsigned char *p=img;
     
@@ -55,9 +59,12 @@ int main(int argc, char *argv[]) {
     #pragma omp parallel for
     for(int i=0; i<height-1; i+=2){
         for(int j=0; j<width-1; j+=2){
+            //Average across channels
             int redAvg = (p[channels*(i*width + j)] + p[channels*(i*width + j+1)] + p[channels*((i+1)*width + j)] + p[channels*((i+1)*width + j+1)])/4;
             int greenAvg = (p[channels*(i*width + j) + 1] + p[channels*(i*width + j+1) + 1] + p[channels*((i+1)*width + j) + 1] + p[channels*((i+1)*width + j+1) + 1])/4;
             int blueAvg = (p[channels*(i*width + j) + 2] + p[channels*(i*width + j+1) + 2] + p[channels*((i+1)*width + j) + 2] + p[channels*((i+1)*width + j+1) + 2])/4;
+            
+            //Set output channel values
             cpg[channels*((i/2)*comp_width + j/2)] = redAvg;
             cpg[channels*((i/2)*comp_width + j/2) + 1] = greenAvg;
             cpg[channels*((i/2)*comp_width + j/2) + 2] = blueAvg;
@@ -72,12 +79,13 @@ int main(int argc, char *argv[]) {
     // stbi_write_jpg(compressedFileName, comp_width, comp_height, channels, comp_img, 100);
     printf("Image compression complete\n\n");
 
-    //GRAY SCALE
+    /*
+    GRAYSCALE
+    */
     int gray_channels = 1;
     size_t gray_img_size = comp_width * comp_height * gray_channels;
     unsigned char *gray_img = malloc(gray_img_size);
-    unsigned char *pg=gray_img;
-    
+    unsigned char *pg=gray_img; //Output image pointer
 
     
     double start2 = omp_get_wtime();
@@ -105,7 +113,7 @@ int main(int argc, char *argv[]) {
     elapsed = finish - start;
     printf("Threads: %d  Total Time: %f seconds\n", nThreads, elapsed);
 
-
+    //Create comp and gray image outputs
     stbi_write_jpg(greyscaleFileName, comp_width, comp_height, gray_channels, gray_img, 100); //1-100 image quality
     stbi_write_jpg(compressedFileName, comp_width, comp_height, channels, comp_img, 100);
     printf("Image grayscale complete\n");
