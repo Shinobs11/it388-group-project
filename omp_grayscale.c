@@ -8,7 +8,9 @@
 
 #include <omp.h>
 
-
+#define RED_WEIGHT 0.3
+#define GREEN_WEIGHT 0.59
+#define BLUE_WEIGHT 0.11
 int main(int argc, char *argv[]) {
     int nThreads;
     char* originalFileName = (char *) malloc(100*sizeof(char));
@@ -32,7 +34,7 @@ int main(int argc, char *argv[]) {
 
     int width, height, channels;
     unsigned char *img = stbi_load(originalFileName, &width, &height, &channels, 0); //Loading image
-    // stbi_write_jpg("test.png", width, height, channels, img, 100);
+    stbi_write_jpg("imageLoadedBySTB.png", width, height, channels, img, 100);
 
     if(img == NULL) {
         printf("Error in loading the image\n");
@@ -68,7 +70,6 @@ int main(int argc, char *argv[]) {
             cpg[channels*((i/2)*comp_width + j/2)] = redAvg;
             cpg[channels*((i/2)*comp_width + j/2) + 1] = greenAvg;
             cpg[channels*((i/2)*comp_width + j/2) + 2] = blueAvg;
-            // printf("index: %d\tred_avg:%d, green_avg:%d, blue_avg:%d\n",(channels*((i/2)*comp_width + j/2)),redAvg,greenAvg,blueAvg);
         }
     }
 
@@ -88,29 +89,18 @@ int main(int argc, char *argv[]) {
     unsigned char *pg=gray_img; //Output image pointer
 
     
-    double start2 = omp_get_wtime();
+    double grayScaleStart = omp_get_wtime();
     #pragma omp parallel for
     for(int i=0; i<comp_height; i++){
         for(int j=0; j<comp_width; j++){
-            pg[i*comp_width + j] = (uint8_t)((cpg[channels*(i*comp_width + j)] + cpg[channels*(i*comp_width + j) + 1] + cpg[channels*(i*comp_width + j) + 2])/3.0);
-
+            uint8_t luminosity = (uint8_t)(RED_WEIGHT*cpg[channels*(i*comp_width + j)] + GREEN_WEIGHT*cpg[channels*(i*comp_width + j) + 1] + BLUE_WEIGHT*cpg[channels*(i*comp_width + j) + 2]);
+            pg[i*comp_width + j] = luminosity;
         }
     }
-    elapsed = omp_get_wtime()-start2;
+    elapsed = omp_get_wtime()-grayScaleStart;
     printf("Grayscale time:%f\n", elapsed);
-
-    //2nd Grayscale parallel approach
-
-    // #pragma omp parallel 
-    // for(int i=0; i<comp_height; i++){
-    //     #pragma omp for nowait
-    //     for(int j=0; j<comp_width; j++){
-    //         pg[i*comp_width + j] = (uint8_t)((cpg[channels*(i*comp_width + j)] + cpg[channels*(i*comp_width + j) + 1] + cpg[channels*(i*comp_width + j) + 2])/3.0);
-    //     }
-    // }
     
-    finish = omp_get_wtime();
-    elapsed = finish - start;
+    elapsed = omp_get_wtime() - start;
     printf("Threads: %d  Total Time: %f seconds\n", nThreads, elapsed);
 
     //Create comp and gray image outputs
