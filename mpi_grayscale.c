@@ -1,3 +1,10 @@
+/**
+ * @class IT 388
+ * @groupname Za Warudo 
+ * @file mpi_grayscale.c
+ * @brief Uses MPI Shared memory API to compress image with 2x2 compression and grayscaling
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
