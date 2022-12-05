@@ -1,3 +1,9 @@
+/*
+IT388
+
+OMP implementation that performs a 2x2 compression and grayscale on input image. 
+Both 2x2 compression and grayscale have been parallelized using omp. 
+*/
 #include <stdio.h>
 #include <stdlib.h>
 
